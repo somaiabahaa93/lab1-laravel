@@ -4,11 +4,12 @@ index page
 @endsection
 @section('content')
 <a href="{{route('posts.create')}}" class="btn btn-success my-3">Creat Post</a>
-<table class="table">
+<table class="table table-striped ">
   <thead>
     <tr>
       <th scope="col">#</th>
       <th scope="col">title</th>
+      <th scope="col">Slug</th>‏
       <th scope="col">posted_by</th>
       <th scope="col">created-At</th>
       <th scope="col">action</th>
@@ -19,6 +20,8 @@ index page
     <tr>
       <th scope="row">{{$post->id}}</th>
       <td>{{$post->title}}</td>
+      <td>{{ $post->slug}}</td>
+
       <td>{{$post->user ? $post->user->name : 'user not found'}}</td>
       <td>{{$post->created_at->format('Y-m-d')}}</td>
       <td>

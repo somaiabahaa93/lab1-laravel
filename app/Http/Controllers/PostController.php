@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+ use Illuminate\Http\Request;
 use App\Models\Post;
 use  App\Models\User;
+use App\Http\Requests\StorePostRequest;
+use App\Http\Requests\UpdatePostRequest;
+
 
 
 
@@ -37,7 +40,7 @@ public function create ()
     
 }
 
-public function store (Request $request)
+public function store (StorePostRequest $request)
 {
     $reqData=$request->all();
     Post::create($reqData);
@@ -45,7 +48,7 @@ public function store (Request $request)
     
 
 }
-public function edit ($postId)
+public function edit ( $postId)
 {
 
     // $post = ['id' => 1, 'title' => 'laravel', 'description' => 'laravel is awsome framework', 'posted_by' => 'Ali'];
@@ -54,7 +57,7 @@ public function edit ($postId)
  return view('posts.edit',['post'=>$post,'users'=>User::all()]);
 
 }
-public function update (Request $request ,$postId)
+public function update (UpdatePostRequest $request ,$postId)
  {   
     //   $reqData= $request->all();
     
